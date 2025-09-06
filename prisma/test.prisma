@@ -1,0 +1,19 @@
+// Prisma schema for the GraphQL API starter
+// Datasource and generator are set up for SQLite for testing.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@prisma/test-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./test.db"
+}
+
+// Minimal placeholder model to allow initial migration.
+// Replace or extend with real domain models.
+model Meta {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+}

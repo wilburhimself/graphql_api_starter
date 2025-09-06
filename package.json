@@ -4,6 +4,9 @@
   "description": "Starter kit for building a TypeScript GraphQL server with generated queries and CUD mutations per entity. ORM-agnostic with legacy Sequelize support during migration.",
   "main": "index.js",
   "dependencies": {
+    "@pothos/core": "^4.0.0",
+    "@pothos/plugin-prisma": "^4.0.0",
+    "@prisma/client": "^6.15.0",
     "babel-register": "^6.24.0",
     "babel-resolver": "^1.1.0",
     "cookie-parser": "~1.4.3",
@@ -14,12 +17,9 @@
     "express-generator": "^4.14.1",
     "graphql": "^16.8.1",
     "graphql-yoga": "^5.7.0",
-    "@pothos/core": "^4.0.0",
-    "@pothos/plugin-prisma": "^4.0.0",
     "morgan": "~1.8.1",
     "pg": "^6.1.5",
     "pug": "~2.0.0-rc.4",
-    "@prisma/client": "^5.19.1",
     "serve-favicon": "~2.4.2",
     "underscore": "^1.8.3"
   },
@@ -34,6 +34,7 @@
     "babel-cli": "^6.4.0",
     "babel-preset-env": "^1.2.2",
     "bluebird": "^3.5.0",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -42,23 +43,24 @@
     "mocha": "^3.3.0",
     "nodemon": "^1.11.0",
     "prettier": "^3.3.3",
+    "prisma": "^6.15.0",
     "supertest": "^3.0.0",
     "ts-jest": "^29.2.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.8.1",
-    "prisma": "^5.19.1"
+    "typescript-eslint": "^8.8.1"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "NODE_ENV=production node dist/app.js",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "test": "jest",
+    "test": "npm run generate:test && jest",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write .",
     "prisma": "prisma",
     "migrate": "prisma migrate dev",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "generate:test": "prisma generate --schema=./prisma/test.prisma"
   },
   "repository": {
     "type": "git",
