@@ -1,9 +1,4 @@
-node_modules
-.idea
-.DS_Store
-npm-debug.log
-distribution
 
-# TypeScript/Jest build artifacts
-dist
-coverage
+.env.test
+coverage/
+node_modules/
